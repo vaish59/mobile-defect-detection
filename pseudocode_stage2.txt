@@ -1,0 +1,41 @@
+1. **Import Required Libraries**
+   - Import OpenCV for image processing.
+   - Import NumPy for numerical operations.
+   - Import Torch and torchvision to load and run the trained model.
+
+2. **Load the Trained Model**
+   - Set the device to CUDA if available; otherwise, use CPU.
+   - Load the trained PyTorch model.
+   - Set the model to evaluation mode.
+
+3. **Preprocess the Input Image**
+   - Read the image using OpenCV.
+   - Convert the image to grayscale (if necessary).
+   - Resize the image to match the model’s input dimensions.
+   - Normalize pixel values between [0,1].
+   - Convert the image to a PyTorch tensor and add a batch dimension.
+   - Move the tensor to the appropriate device (CPU/GPU).
+
+4. **Perform Defect Detection**
+   - Pass the preprocessed image through the model.
+   - Get the output predictions from the model.
+   - Convert the output to a human-readable format (e.g., defect class probabilities, bounding boxes, or segmentation masks).
+
+5. **Post-Processing**
+   - If classification:
+     - Get the class with the highest probability and label the defect.
+   - If object detection:
+     - Extract bounding boxes and filter out low-confidence detections.
+   - If segmentation:
+     - Convert the output tensor to a binary mask highlighting defects.
+
+6. **Overlay Results on the Image**
+   - Draw bounding boxes or segmentation contours on the image.
+   - Label detected defects with confidence scores.
+
+7. **Save or Display the Output**
+   - Save the image with defect markings.
+   - Display the annotated image using OpenCV.
+   - Print or return detection results as JSON for further use.
+
+8. **End Process**
